@@ -1,0 +1,44 @@
+body{
+    background: #E55D87;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #5FC3E4, #E55D87);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #5FC3E4, #E55D87); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.loginPage{
+    display: flex;
+    height: 100%;
+    font-family: 'PT Sans', sans-serif;
+    margin:2em 7em auto 7em;
+}
+.loginPage h1{
+    font-size: 2em;
+    margin-top:0.4em;
+    
+}
+.loginContainer{
+    display: flex;
+    background-color:white;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width:70%;
+
+    background-color:white;
+
+
+}
+.input{
+    margin-top:1em;
+}
+.submitSection{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    align-content: space-between;
+    margin:1em;
+}
+.submitSection button{
+    margin-bottom: 1em;
+}
