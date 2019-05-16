@@ -24,7 +24,7 @@ class Search extends Component{
         e.preventDefault();
         this.setState({searchInitiated:true})
         console.log('hitting search in the front')
-        const searchResponse = await fetch ('/api/search/ ',{
+        const searchResponse = await fetch ('https://damp-springs-99205.herokuapp.com/api/search/ ',{
             method:"POST",
             credentials:"include",
             body: JSON.stringify(this.state),
