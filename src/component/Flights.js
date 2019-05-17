@@ -1,14 +1,45 @@
 import React, { Component } from 'react';
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route,Link} from 'react-router-dom';
+import * as routes from '../constants/routes';
 
 
 
 
 class Flights extends Component  {
+    state={
+        logged:this.props.logged,
+        userID:this.props.userID,
+        flightData:null
+    }
+    addFlight = async(data) =>{
+        console.log(this.props.userID,'this is userID')
+        await this.setState({
+         flightData:data   
+        })
+        const addFlight = await fetch ('/users/add',{
+            method:"POST",
+            credentials:"include",
+            body: JSON.stringify(data),
+            headers:{
+                "Content-Type":'application/json'
+            }
+        });
+        if(addFlight.success){
+            await this.setState({
+                flightData:null
+            })
+        }
+    }
+        
+    handleClick=(e)=>{
+        //this is to make the button disable through e.tar
+
+    }
     render(){
         console.log(typeof this.props.flights)
         console.log(this.props.flights)
         const { data } = this.props.flights
+        console.log(data,"this is the data")
         return(
             <div>
             {data.map((f, i)=>{
@@ -22,6 +53,7 @@ class Flights extends Component  {
                         <h5>Carrier Code:{carrierCode}</h5>
                         <h5>Length:{duration}</h5>
                         <p>Price:{total},Taxes:{totalTaxes},Total{Number(total)+Number(totalTaxes)}}</p>
+                        <button onClick={()=>this.addFlight(data[i])} >Add Flight</button>
                     </div>
                 )
             })}

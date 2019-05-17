@@ -8,7 +8,6 @@ import "./Home.css";
 
 const Text = styled.p`
     color: blue;
-    
     display:flex;
     align-self:center;
 `
@@ -34,7 +33,7 @@ class Home extends Component{
                         <Button variant="primary" size="lg" color="red" className="customButton">Start Planning</Button>
                     </div>           
                 </div>
-                <div className="bottomPart">
+                {/* <div className="bottomPart">
                     <p>Destinations</p>
                     <div className="firstBox">
                         <h3>LA</h3>
@@ -45,7 +44,7 @@ class Home extends Component{
                     <div className="thirdBox">
                         <h3>CHI</h3>
                     </div>
-                </div>
+                </div> */}
             </section>
             
 

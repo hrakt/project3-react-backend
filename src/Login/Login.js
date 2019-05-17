@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
-import {Redirect, Link} from "react-router-dom";
+import {Redirect, Link,Route} from "react-router-dom";
+import * as routes from "../constants/routes"
 import './Login.css'
 
 class Login extends Component{
@@ -12,11 +13,11 @@ class Login extends Component{
         this.setState({
             [e.target.name]: e.target.value
         });
-        console.log(this.state);
     }
 
     onSubmit = async (e)=>{
         e.preventDefault();
+        console.log("whadipppp")
         const loginResponse = await fetch ('/users/login ',{
             method:"POST",
             credentials:"include",
@@ -26,19 +27,19 @@ class Login extends Component{
             }
         });
         const parsedLogin = await loginResponse.json()
+        console.log(parsedLogin,"this is parsedLogin")
         if (parsedLogin.success){
-            this.props.loggedIn()
+            this.props.loggedIn(parsedLogin.data._id);
         }
     }
     render(){
         return(
             this.props.logged
-            ?    <Redirect to='/'/>
+            ?    <Redirect to={routes.MYPROFILE}/>
             :    <form  onSubmit={this.onSubmit}>
                 <div className="loginPage">
                 <div className="loginContainer">
                 <h1>Login</h1>
-
                 <div className="input">
                     <input type="text" name="username" value={this.state.username} placeholder="username" onChange={this.changeHandler}/>
                 </div>

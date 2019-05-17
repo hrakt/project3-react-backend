@@ -20,17 +20,22 @@ const NavBar = (props) =>
             <NavItem>
                 <NavLink to={router.SEARCH} activeClassName='active'>SEARCH </NavLink>
             </NavItem>
-            <NavItem>
-                <NavLink to={router.ROOT} exact activeClassName='active'>ROOT </NavLink>
-            </NavItem>
+            
             {props.logStat
             
-            ?   <NavItem>
+            ?   [<NavItem>
+                    <NavLink to={router.MYPROFILE} exact activeClassName='active'>MYPROFILE </NavLink>
+                </NavItem>,
+                <NavItem>
                     <NavLink onClick={props.logOut}>LOGOUT</NavLink>
-                </NavItem>
-            : <NavItem>
+                </NavItem>]
+                
+            : [   <NavItem>
+                    <NavLink to={router.REGISTER} exact activeClassName='active'>REGISTER</NavLink>
+                </NavItem>,
+                <NavItem>
                     <NavLink to={router.LOGIN} exact activeClassName='active'>LOGIN</NavLink>
-                </NavItem>
+                </NavItem>]
             }
             </Navbar>
 

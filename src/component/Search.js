@@ -21,10 +21,11 @@ class Search extends Component{
         });
     }
     onSubmit = async (e)=>{
+        console.log(this.props.userID,'this is the userID')
         e.preventDefault();
-        this.setState({searchInitiated:true})
+        await this.setState({searchInitiated:true})
         console.log('hitting search in the front')
-        const searchResponse = await fetch ('https://damp-springs-99205.herokuapp.com/api/search/ ',{
+        const searchResponse = await fetch ('/api/search/',{
             method:"POST",
             credentials:"include",
             body: JSON.stringify(this.state),
@@ -33,7 +34,7 @@ class Search extends Component{
             }
         });
         const parsedResponse = await searchResponse.json();
-        this.setState({
+        await this.setState({
             flights: parsedResponse.flights,
             searchStatus: parsedResponse.success,
             searchInitiated:false
@@ -42,20 +43,21 @@ class Search extends Component{
     render(){
 
         return(
+            <div>
             <form onSubmit={this.onSubmit}>
                 <input type="text" name="origin" placeholder="Enter your origin" onChange={this.changeHandler}/>
                 <input type="text" name="destination" placeholder="Enter your destination" onChange={this.changeHandler}/>
                 <input type="date" name="startDate" placeholder="Enter your origin" onChange={this.changeHandler}></input>
                 <input type="date" name="endDate" onChange={this.changeHandler}></input><br/>
-                <button type="submit">SEARCH</button>
+                <button onClick={()=>this.onSubmit} type="submit">SEARCH</button>
                 <ClipLoader loading={this.state.searchInitiated}/>
-                
+            </form> 
                 {this.state.searchStatus?
-                <Flights flights={this.state.flights} /> :<p></p> }
+                <Flights flights={this.state.flights} userID={this.props.userID} logged={this.props.logged} /> :<p></p> }
 
+            </div>  
                 
-                
-            </form>
+            
         )
     }
 }

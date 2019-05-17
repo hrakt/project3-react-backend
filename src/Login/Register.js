@@ -3,6 +3,7 @@ import { Link} from "react-router-dom";
 import './Register.css'
 
 
+
 class Register extends Component{
     state={
         username:'',
