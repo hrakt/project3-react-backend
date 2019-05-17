@@ -21,5 +21,7 @@ Stack Overflow
 https://reacttraining.com/
 
 Additional Features To Add
+Add hotels to the search
 On home page, users will be able to popular destination with precreated fluights and hotels. 
 Be able to see more than 5 flights by pressing see more and fetching more flight options to.
+Be able to add the hotel to the User
